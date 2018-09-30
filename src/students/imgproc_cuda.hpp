@@ -19,3 +19,4 @@
 #include "../utils/Histogram.hpp"
 
 /* You could use this file to declare seperate basic effects */
+Histogram getHistogramCUDA(const Image *src);

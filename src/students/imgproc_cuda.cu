@@ -15,3 +15,13 @@
 #include "imgproc_cuda.hpp"
 
 /* You could use this file to implement seperate basic effects */
+Histogram getHistogramCUDA(const Image *src)
+{
+    std::cout << "Hello from getHistogramCUDA!\n";
+    std::cout << "Image witdh: " << src->width << "\n";
+    std::cout << "Image height: " << src->height << "\n";
+
+    Histogram hist;
+
+    return hist;
+}
