@@ -18,10 +18,17 @@
 Histogram getHistogramCUDA(const Image *src)
 {
     std::cout << "Hello from getHistogramCUDA!\n";
+<<<<<<< HEAD
     std::cout << "Image witdh: " << src->width << "\n";
     std::cout << "Image height: " << src->height << "\n";
 
     Histogram hist;
 
     return hist;
+=======
+    std::cout << "Image witdh: " << src->witdh << "\n";
+    std::cout << "Image height: " << src->height << "\n";
+
+    return nullptr;
+>>>>>>> ec33721774860c87fe75f2d3b5d7dbf0c984c9f2
 }
