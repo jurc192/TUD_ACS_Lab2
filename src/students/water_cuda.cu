@@ -28,13 +28,13 @@ std::shared_ptr<Histogram> runHistogramStageCUDA(const Image *previous, const Wa
   std::cout << "runHistogramCUDA!\n";
   auto hist = std::make_shared<Histogram>(getHistogramCUDA(previous));
 
-  // // Optionally save the intermediate histogram as an image
-  // if (options->save_intermediate) {
-  //   auto hist_img = hist->toImage();
-  //   hist_img->toPNG("output/" + options->img_name + "_histogramCUDA.png");
-  // }
-  // return hist;
-  return nullptr;
+  // Optionally save the intermediate histogram as an image
+  if (options->save_intermediate) {
+    auto hist_img = hist->toImage();
+    hist_img->toPNG("output/" + options->img_name + "_histogramCUDA.png");
+  }
+  return hist;
+
 }
 
 
