@@ -13,9 +13,7 @@
 // limitations under the License.
 
 #include <iostream>
-
 #include "../baseline/water.hpp"
-
 #include "water_cuda.hpp"
 
 // Added by JUR:
@@ -28,7 +26,7 @@
 std::shared_ptr<Histogram> runHistogramStageCUDA(const Image *previous, const WaterEffectOptions *options) {
   
   std::cout << "runHistogramCUDA!\n";
-  // auto hist = std::make_shared<Histogram>(getHistogram(previous));
+  auto hist = std::make_shared<Histogram>(getHistogramCUDA(previous));
 
   // // Optionally save the intermediate histogram as an image
   // if (options->save_intermediate) {
