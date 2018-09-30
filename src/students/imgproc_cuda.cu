@@ -26,7 +26,7 @@ Histogram getHistogramCUDA(const Image *src)
     Histogram hist;
 
     // Host pointers
-    unsigned char *h_image = src->raw[0]; 
+    unsigned char *h_image = &(src->raw[0]); 
     int *h_histogram = &hist.values;
 
     // Device pointers
