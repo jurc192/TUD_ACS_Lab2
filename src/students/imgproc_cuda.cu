@@ -24,6 +24,29 @@ Histogram getHistogramCUDA(const Image *src)
     assert((src != nullptr));
     
     Histogram hist;
+
+    // Host pointers
+    std::vector<unsigned char> h_image = src->raw; 
+    std::vector<int> h_histogram = hist.values;
+
+    // Device pointers
+    unsigned char *d_image;
+    int *d_histogram;
+
+    // malloc 4 bytes per pixel (RGBA)
+    if (cudaMalloc((void **) &d_image, src->width * src->height * 4) != cudaSuccess) {
+        std::cout << "Failed at cudaMalloc vec_a\n";
+    }
+
+    // malloc 4*256 int (4 channels, 256 values each)
+    if (cudaMalloc((void **) &d_histogram, 4*256*sizeof(int)) != cudaSuccess) {
+        std::cout << "Failed at cudaMalloc vec_a\n";
+    }
+
+    // cudaMemcpy(host2device)
+    // kernel
+    // cudaMemcpy(device2host)
+
   
     for (int y = 0; y < src->height; y++) {
       for (int x = 0; x < src->width; x++) {
