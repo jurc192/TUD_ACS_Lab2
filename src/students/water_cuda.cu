@@ -20,6 +20,8 @@
 
 // Added by JUR:
 #include "imgproc_cuda.hpp"
+#include "../utils/Timer.hpp"
+#include "../utils/Histogram.hpp"
 
 
 
