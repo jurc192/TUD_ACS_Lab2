@@ -76,8 +76,13 @@ struct ProgramOptions {
       img_baseline_result->toPNG("output/" + water_opts.img_name + "_result.png");
     }
 
+    #ifdef USE_CUDA
+      std::cout << "Hello from CUDA block!\n";
+    #endif
+
     // Run the whole pipeline using CUDA
     if (cuda) {
+      std::cout << "Hello from CUDA if!\n";
 #ifdef USE_CUDA
       tt.start();
       auto img_cuda_result = runWaterEffectCUDA(img.get(), &water_opts);
