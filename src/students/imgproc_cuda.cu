@@ -43,10 +43,22 @@ Histogram getHistogramCUDA(const Image *src)
         std::cout << "Failed at cudaMalloc vec_a\n";
     }
 
-    // cudaMemcpy(host2device)
-    // kernel
-    // cudaMemcpy(device2host)
+    // Transfer data from CPU to GPU
+    cudaError_t err;
+    err = cudaMemcpy(d_image, h_image, src->width * src->height * 4, cudaMemcpyHostToDevice);
+    if (err != cudaSuccess) {
+        std::cout << cudaGetErrorString(err) << "\n";
+        std::cout << "Failed at cudaMemcpy at" << __FILE__ << " line: " << __LINE__ << "\n";
+    }
 
+    // kernel
+ 
+    // Transfer data from GPU to CPU
+    err = cudaMemcpy(h_histogram, d_histogram, 4*256*sizeof(int), cudaMemcpyHostToDevice);
+    if (err != cudaSuccess) {
+        std::cout << cudaGetErrorString(err) << "\n";
+        std::cout << "Failed at cudaMemcpy at" << __FILE__ << " line: " << __LINE__ << "\n";
+    }
   
     for (int y = 0; y < src->height; y++) {
       for (int x = 0; x < src->width; x++) {
