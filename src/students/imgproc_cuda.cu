@@ -18,17 +18,21 @@
 Histogram getHistogramCUDA(const Image *src)
 {
     std::cout << "Hello from getHistogramCUDA!\n";
-<<<<<<< HEAD
     std::cout << "Image witdh: " << src->width << "\n";
     std::cout << "Image height: " << src->height << "\n";
 
+    assert((src != nullptr));
+    
     Histogram hist;
+  
+    for (int y = 0; y < src->height; y++) {
+      for (int x = 0; x < src->width; x++) {
+        for (int c = 0; c < 4; c++) {
+          auto intensity = src->pixel(x, y).colors[c];
+          hist(intensity, c)++;
+        }
+      }
+    }
 
     return hist;
-=======
-    std::cout << "Image witdh: " << src->witdh << "\n";
-    std::cout << "Image height: " << src->height << "\n";
-
-    return nullptr;
->>>>>>> ec33721774860c87fe75f2d3b5d7dbf0c984c9f2
 }
